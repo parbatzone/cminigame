@@ -76,15 +76,33 @@ int main() {
             }
         }
 
-        // Ask to play again
-        printf("Do you want to play again? (y/n): ");
-        scanf(" %c", &playAgain);
-        playAgain = tolower(playAgain);
-        printf("\n");
+        // Ask to restart or quit
+        printf("========================================\n");
+        printf("   GAME OVER!\n");
+        printf("========================================\n");
+        printf("\n1. Restart\n");
+        printf("2. Quit\n");
+        printf("\nEnter your choice (1 or 2): ");
+        
+        int choice;
+        if (scanf("%d", &choice) != 1) {
+            // Clear invalid input
+            while (getchar() != '\n');
+            choice = 2; // Default to quit on invalid input
+        }
+        
+        if (choice == 1) {
+            playAgain = 'y';
+            printf("\n🔄 Restarting game...\n\n");
+        } else {
+            playAgain = 'n';
+        }
 
     } while (playAgain == 'y');
 
-    printf("Thanks for playing! Goodbye!\n");
+    printf("\n========================================\n");
+    printf("   Thanks for playing! Goodbye! 👋\n");
+    printf("========================================\n");
     return 0;
 }
 
